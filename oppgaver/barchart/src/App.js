@@ -4,13 +4,15 @@ import BarChart from './BarChart';
 
 class App extends Component {
   render() {
+    const data = [5, 10, 1, 3, 2, 1, 4, 2, 7];
+
     return (
       <div className="App">
         <div className="App-header">
-          <h2>d3ia dashboard</h2>
+          <h1>Bar chart</h1>
         </div>
         <div>
-          <BarChart data={[5, 10, 1, 3]} size={[500, 500]} />
+          <BarChart data={data} size={[800, 500]} />
         </div>
       </div>
     );
