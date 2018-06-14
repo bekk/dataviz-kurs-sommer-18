@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 100px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+svg {
+  margin: 2rem;
+}
+
+* {
+  font-family: RobotoLight;
+}
+
+.tick { font-size: 1.5rem; }
+
+@font-face {font-family: 'RobotoLight'; src: url('Roboto-Light.ttf')}
