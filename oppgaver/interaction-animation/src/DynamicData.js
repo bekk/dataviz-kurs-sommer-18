@@ -3,7 +3,7 @@ import "./App.css";
 import { transition } from "d3-transition";
 import { select } from "d3-selection";
 
-class InteractionAnimation extends Component {
+export default class DynamicData extends Component {
   constructor(props) {
     super(props);
     this.create = this.create.bind(this);
@@ -131,4 +131,3 @@ class InteractionAnimation extends Component {
     return <svg ref={container => (this.container = container)} />
   }
 }
-export default InteractionAnimation;

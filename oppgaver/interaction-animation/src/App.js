@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import InteractionAnimation from './InteractionAnimation';
+import DynamicData from './DynamicData';
 
 class App extends Component {
   constructor(props) {
@@ -27,10 +27,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>Interaction & animation</h1>
+          <h1>Dynamic data</h1>
         </div>
         <div>
-          <InteractionAnimation data={data} size={[800, 500]} />
+          <DynamicData data={data} size={[800, 500]} />
         </div>
       </div>
     );
