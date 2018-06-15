@@ -58,6 +58,9 @@ export default class DynamicData extends Component {
       .attr("r", 0)
       .remove();
 
+
+    // join, enter, update, exit for tekster:
+
     const text = select(this.svg)
       .selectAll("text")
       .data(data, (d) => d.name);
@@ -73,7 +76,6 @@ export default class DynamicData extends Component {
     text
       .transition(t)
       .attr("x", xCoord)
-      .attr("text-anchor", "middle")
 
     text
       .exit()
