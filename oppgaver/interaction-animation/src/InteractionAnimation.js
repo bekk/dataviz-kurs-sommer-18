@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { transition } from "d3-transition";
-import { scaleLinear } from "d3-scale";
-import { max } from "d3-array";
 import { select } from "d3-selection";
-import { axisLeft } from "d3-axis";
 
 class InteractionAnimation extends Component {
   constructor(props) {
@@ -20,93 +17,103 @@ class InteractionAnimation extends Component {
     this.create();
   }
 
+  updateChart(data) {
+    console.log("updateChart");
+
+    const t = transition()
+      .duration(200);
+
+    const circles = select(this.svg)
+      .selectAll("circle")
+      .data(data, (d) => d.name);
+
+    const color = (d, i) => `hsl(32, 100%, ${(d.value/20 + 0.25)*100}%)`
+    const xCoord = (d, i) => 60 + i * 60;
+    const radius = (d, i) => 10 + d.value * 2;
+
+    circles
+      .enter()
+      .append("circle")
+      .style("fill", color)
+      .attr("cx", xCoord)
+      .attr("cy", this.height/2)
+      .attr("r", 0)
+      .transition(t)
+      .attr("r", radius)
+
+    circles
+      .transition(t)
+      .attr("r", radius)
+      .attr("cx", xCoord)
+      .style("fill", color)
+
+    circles
+      .exit()
+      .transition(t)
+      .attr("r", 0)
+      .remove();
+
+    const text = select(this.svg)
+      .selectAll("text")
+      .data(data, (d) => d.name);
+
+    text
+      .enter()
+      .append("text")
+      .text((d, i) => d.name)
+      .attr("x", xCoord)
+      .attr("text-anchor", "middle")
+      .attr("y", this.height/2 - 40)
+
+    text
+      .transition(t)
+      .attr("x", xCoord)
+      .attr("text-anchor", "middle")
+
+    text
+      .exit()
+      .remove();
+  }
+
   create() {
     console.log("create");
 
-    const svg = this.container;
-    svg.setAttribute("width", this.props.size[0]);
-    svg.setAttribute("height", this.props.size[1]);
-
-    const node = svg;
     const data = this.props.data;
-    const width = this.props.size[0];
-    const height = this.props.size[1];
+    this.svg = this.container;
+    this.width = this.props.size[0];
+    this.height = this.props.size[1];
+    
+    this.svg.setAttribute("width", this.width);
+    this.svg.setAttribute("height", this.height);
 
-    function createD3(data) {
-      const t = transition()
-        .duration(200);
+    this.updateChart(data);
 
-      select(node)
-        .selectAll("circle")
-        .data(data)
-        .enter()
-        .append("circle")
-        .style("fill", "#fe9922")
-        .attr("cx", (d, i) => 60 + i * 50)
-        .attr("cy", height/2)
-        .attr("r", 0)
-        .transition(t)
-        .attr("r", (d, i) => 10 + d.value * 2)
+    let counter = 0;
 
-      select(node)
-        .selectAll("text")
-        .data(data)
-        .enter()
-        .append("text")
-        .text((d, i) => d.name)
-        .attr("x", (d, i) => 60 + i * 50 - 5)
-        .attr("y", height/2 - 40)
-
-      select(node)
-        .selectAll("circle")
-        .data(data)
-        .transition(t)
-        .attr("r", (d, i) => 10 + d.value * 2)
-
-      select(node)
-        .selectAll("circle")
-        .data(data)
-        .exit()
-        .transition(t)
-        .attr("r", (d, i) => 0)
-        .remove();
-
-      select(node)
-        .selectAll("text")
-        .data(data)
-        .exit()
-        .remove();
-    }
-
-    createD3(this.props.data);
-
-    const props = this.props;
-
-    function updateData() {
+    const updateData = () => {
       const push = Math.random() < 0.5;
       const verdi = Math.floor(Math.random() * 10);
-      const index = Math.floor(Math.random() * props.data.length);
-      const navn = "x" + verdi;
+      const index = Math.floor(Math.random() * data.length);
 
       const max = 12;
 
       const action = Math.random() < 0.5
         ? "change" 
-        : ((props.data.length == 1 || Math.random() < 0.5 && props.data.length <= max)
+        : ((data.length == 1 || Math.random() < 0.5 && data.length <= max)
           ? "push"
           : "pop");
 
-      console.log(`Oppdaterer data ${props.data.length} ${action} ${verdi} ${index}`)
+      console.log(`updateData ${action} ${verdi} ${index} => ${data.map((e) => e.name)}`)
 
       if (action == "change") {
-        props.data[index].value = verdi;
+        data[index].value = verdi;
       } else if (action == "push") {
-        props.data.push({name: navn, value: verdi});
+        data.splice(index, 0, {name: "x" + counter++, value: verdi});
       } else if (action == "pop") {
-        props.data.pop();
+        data.splice(index, 1);
       }
 
-      createD3(props.data);
+      this.updateChart(data);
     }
 
     window.setInterval(updateData, 500);
