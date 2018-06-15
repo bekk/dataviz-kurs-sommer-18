@@ -20,17 +20,19 @@ class InteractionAnimation extends Component {
   updateChart(data) {
     console.log("updateChart");
 
+    const color = (d, i) => `hsl(32, 100%, ${(d.value/20 + 0.3)*100}%)`
+    const xCoord = (d, i) => 60 + i * 60;
+    const radius = (d, i) => 5 + d.value * 2.5;
+
     const t = transition()
       .duration(200);
 
+    // JOIN: bind elementer til data
     const circles = select(this.svg)
       .selectAll("circle")
       .data(data, (d) => d.name);
 
-    const color = (d, i) => `hsl(32, 100%, ${(d.value/20 + 0.25)*100}%)`
-    const xCoord = (d, i) => 60 + i * 60;
-    const radius = (d, i) => 10 + d.value * 2;
-
+    // ENTER: opprett nye elementer når nye data
     circles
       .enter()
       .append("circle")
@@ -41,12 +43,15 @@ class InteractionAnimation extends Component {
       .transition(t)
       .attr("r", radius)
 
+
+    // UPDATE: oppdater elementer iht endret data
     circles
       .transition(t)
       .attr("r", radius)
       .attr("cx", xCoord)
       .style("fill", color)
 
+    // EXIT: fjern elementer uten tilhørende data
     circles
       .exit()
       .transition(t)
@@ -103,7 +108,9 @@ class InteractionAnimation extends Component {
           ? "push"
           : "pop");
 
-      console.log(`updateData ${action} ${verdi} ${index} => ${data.map((e) => e.name)}`)
+      const dataAsString = data.map((e) => `${e.name}:${e.value}`).join(" ");
+
+      console.log(`updateData ${action} ${verdi} ${index} \n${dataAsString}`)
 
       if (action == "change") {
         data[index].value = verdi;
