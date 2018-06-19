@@ -1,9 +1,9 @@
 Tool of choice: D3
 ===================
 
-* *Hva er D3?*
-* *Hvordan henger D3 sammen?*
-* *Hvordan lager man noe i D3?*
+* **Hva er D3?**
+* **Hvordan henger D3 sammen?**
+* **Hvordan lager man noe i D3?**
 
 ***
 
@@ -141,7 +141,7 @@ D3 = Data-Driven Documents
         { name:"Norway", pop:5084 }
     ]
 
-# &#8681;
+&#8681;
 
     <svg height="300" width="600">
         <circle cx="100" cy="150" r="64" style="fill:green" />
