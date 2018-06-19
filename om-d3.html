@@ -17,7 +17,7 @@
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
       .remark-slide-content * { font-size: 16px; }
       .remark-code * { font-size: 12px; }
-      .remark-slide-content img { width: 50%; }
+      .remark-slide-content img { width: 50%; margin: 1rem 0;}
     </style>
   </head>
   <body>
@@ -26,9 +26,11 @@
 Tool of choice: D3
 ===================
 
-* **Hva er D3?**
-* **Hvordan henger D3 sammen?**
-* **Hvordan programmerer man D3?**
+**Hva er D3?**
+
+**Hvordan henger D3 sammen?**
+
+**Hvordan programmerer man D3?**
 
 ---
 
@@ -37,13 +39,13 @@ Hva er D3?
 
 ### Data-Driven Documents ###
 
-* Rammeverk for datavisualisering
+* Javascript-rammeverk for datavisualisering
 
-* Hovedsaklig ment for 2D på web
+* Ment for 2D på web
 
 * Bygger på etablerte HTML5-standarder
 
-* Veldig stabilt, veldig populært, veldig stort community
+* Stabilt, populært, stor community
 
 * Lavnivås rammeverk
     * Mer arbeid
@@ -165,7 +167,6 @@ Man tager noe data og et dokument:
 ~~~javascript
 const data = const data = [
   {name: "a", value: 5}, 
-  {name: "b", value: 10}, 
   ...
   {name: "z", value: 7}
 ];
