@@ -37,7 +37,7 @@ D3 = Data-Driven Documents
 
 JSON
 
-~~~json
+~~~javascript
     [
         { name:"Ireland", income:53000, life: 78, pop:6378, color: "black" },
         { name:"Norway", income:73000, life: 87, pop:5084, color: "blue" },
@@ -48,13 +48,15 @@ JSON
 CSV
 
 
-    id,firstname,lastname,age
-    1,holger,ludvigsen,31
-    2,arne,bakke olsen,47
-    3,bjarne,tellefsen,25
-    4,hanne-lise,severinsen,28
+~~~
+  id,firstname,lastname,age
+  1,holger,ludvigsen,31
+  2,arne,bakke olsen,47
+  3,bjarne,tellefsen,25
+  4,hanne-lise,severinsen,28
+~~~
 
-+ + +
+(pluss pluss pluss)
 
 ***
 
@@ -95,13 +97,13 @@ SVG
 CSS
 
 ~~~css
-    h1 {
-        color: blue;
-    }
+h1 {
+    color: blue;
+}
 
-    svg:hover ellipse {
-        fill: red;
-    }
+svg:hover ellipse {
+    fill: red;
+}
 ~~~
 
 ***
@@ -110,7 +112,7 @@ D3 = Data-Driven Documents
 
 ### Driven ###
 
-~~~json
+~~~javascript
 [
     { name:"Ireland", pop:6378 },
     { name:"Tanzania", pop:3407 },
@@ -121,11 +123,11 @@ D3 = Data-Driven Documents
 &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681;
 
 ~~~html
-    <svg height="300" width="600">
-        <circle cx="100" cy="150" r="64" style="fill:green" />
-        <circle cx="220" cy="150" r="34" style="fill:orange" />
-        <circle cx="340" cy="150" r="51" style="fill:red" />
-    </svg>
+<svg height="300" width="600">
+    <circle cx="100" cy="150" r="64" style="fill:green" />
+    <circle cx="220" cy="150" r="34" style="fill:orange" />
+    <circle cx="340" cy="150" r="51" style="fill:red" />
+</svg>
 ~~~
 
 &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681;
@@ -141,7 +143,7 @@ Hvordan programmerer man i D3?
 
 Man tager noe data og et dokument:
 
-~~~json
+~~~javascript
 const data = const data = [
   {name: "a", value: 5}, 
   {name: "b", value: 10}, 
@@ -154,15 +156,15 @@ const data = const data = [
 
 Joiner dataene til hvert sitt (hypotetiske) element:
 
-~~~json
-    const circles = select("#minSVG")
-      .selectAll("circle")
-      .data(data, (d) => d.name); // data(array, keyFunction)
+~~~javascript
+const circles = select("#minSVG")
+  .selectAll("circle")
+  .data(data, (d) => d.name); // data(array, keyFunction)
 ~~~
 
 Oppretter og definerer hvert element utifra data:
 
-~~~json
+~~~javascript
 circles
   .enter()
   .append("circle") // legger til en <circle>
@@ -200,17 +202,17 @@ Sammen med `.transition()` for animasjon
 General Update Pattern
 -----------------------
 
-*join, enter, update, exit*
+**join, enter, update, exit**
 
 Join og enter har vi allerede sett:
 
-~~~json
-    const circles = select("#minSVG")
-      .selectAll("circle")
-      .data(data, (d) => d.name); // data(array, keyFunction)
+~~~javascript
+const circles = select("#minSVG")
+  .selectAll("circle")
+  .data(data, (d) => d.name); // data(array, keyFunction)
 ~~~
 
-~~~json
+~~~javascript
 circles
   .enter()
   .append("circle") // legger til en <circle>
@@ -222,7 +224,7 @@ circles
 
 Update er **uten** `.enter()`:
 
-~~~json
+~~~javascript
 circles
   .transition()
   .attr("cx", (d, i) => 50 + i * 40)
@@ -231,7 +233,7 @@ circles
 
 Exit er med `.exit()`:
 
-~~~json
+~~~javascript
 circles
   .exit()
   .transition(t)
