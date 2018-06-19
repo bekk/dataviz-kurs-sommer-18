@@ -3,43 +3,7 @@ Tool of choice: D3
 
 * **Hva er D3?**
 * **Hvordan henger D3 sammen?**
-* **Hvordan lager man noe i D3?**
-
-***
-
-Agenda:
-
-Hva er D3?
-    Data-Driven Documents
-    Rammeverk for datavisualisering
-        Hovedsaklig ment for 2D
-        Bygger på etablerte HTML5-standarder
-        Veldig stabilt, veldig populært, veldig stort community
-    Et mer lavnivås rammeverk ift andre graf-biblioteker
-        Men, mye mer frihet til å gjøre noe originalt
-Hvordan er D3 bygd opp?
-    Ligger i navnet: Data-Driven Documents
-        Documents er en DOM, som kan være html-en på siden, men spesielt viktig kan også være elementene i en SVG
-    Dataene er som regel utgangspunktet
-        De transformeres og masseres
-        Og bindes til documentet
-        Eller motsatt da, at dokumentet er utgangspunktet og bindes til dataene    Bottom line: Det bindes! Man kan se på det den ene eller andre veien
-    Ved endringer i data kjøres hele rekka på nytt, og visualiseringen endres
-Hvordan lager man noe i D3?
-    Bindingen
-        .data (mapping av data, med key)
-        .enter (ved nye data)
-        .exit (ved data som går bort)
-
-    General Update Pattern for dynamiske visualiseringer
-
-    D3 sine essensielle modules
-        Selection
-        Transitions
-        Axes
-        Scale
-        Hierarchy
-        ... (finn ut hvilke som er viktige for oppgavene)
+* **Hvordan programmerer man D3?**
 
 ***
 
@@ -73,13 +37,16 @@ D3 = Data-Driven Documents
 
 JSON
 
+~~~json
     [
         { name:"Ireland", income:53000, life: 78, pop:6378, color: "black" },
         { name:"Norway", income:73000, life: 87, pop:5084, color: "blue" },
         { name:"Tanzania", income:27000, life: 50, pop:3407, color: "grey" }
     ]
+~~~
 
 CSV
+
 
     id,firstname,lastname,age
     1,holger,ludvigsen,31
@@ -87,7 +54,7 @@ CSV
     3,bjarne,tellefsen,25
     4,hanne-lise,severinsen,28
 
-osv
++ + +
 
 ***
 
@@ -97,30 +64,37 @@ D3 = Data-Driven Documents
 
 HTML
 
-    <html>
-        <body>
-            <div>
-                <p>...</p>
-                <table>
-                    <tr><td>...</td><td>...</td></tr>
-                    <tr><td>...</td><td>...</td></tr>
-                </table>
-                <svg>
-                    ...
-                </svg>
-            </div>
-        </body>
-    </html>
+~~~xml
+<html>
+    <body>
+        <div>
+            <p>...</p>
+
+            <table>
+                <tr><td>...</td><td>...</td></tr>
+                <tr><td>...</td><td>...</td></tr>
+            </table>
+
+            <svg>
+                ...
+            </svg>
+        </div>
+    </body>
+</html>
+~~~
 
 SVG
 
-    <svg height="100" width="500">
-        <ellipse cx="240" cy="50" rx="220" ry="30" style="fill:yellow" />
-        <ellipse cx="220" cy="50" rx="190" ry="20" style="fill:black" />
-    </svg>
+~~~xml
+<svg height="100" width="500">
+    <ellipse cx="240" cy="50" rx="220" ry="30" style="fill:yellow" />
+    <ellipse cx="220" cy="50" rx="190" ry="20" style="fill:black" />
+</svg>
+~~~
 
 CSS
 
+~~~css
     h1 {
         color: blue;
     }
@@ -128,6 +102,7 @@ CSS
     svg:hover ellipse {
         fill: red;
     }
+~~~
 
 ***
 
@@ -135,32 +110,146 @@ D3 = Data-Driven Documents
 
 ### Driven ###
 
-    [
-        { name:"Ireland", pop:6378 },
-        { name:"Tanzania", pop:3407 },
-        { name:"Norway", pop:5084 }
-    ]
+~~~json
+[
+    { name:"Ireland", pop:6378 },
+    { name:"Tanzania", pop:3407 },
+    { name:"Norway", pop:5084 }
+]
+~~~
 
-&#8681;
+&#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681;
 
+~~~html
     <svg height="300" width="600">
         <circle cx="100" cy="150" r="64" style="fill:green" />
         <circle cx="220" cy="150" r="34" style="fill:orange" />
         <circle cx="340" cy="150" r="51" style="fill:red" />
     </svg>
+~~~
+
+&#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681;
 
 ![SVG result](/img/svg-example.png)
 
+**rinse & repeat**
+
 ***
 
+Hvordan programmerer man i D3?
+-------------------------------
 
+Man tager noe data og et dokument:
 
-~~~python
-import time
-# Quick, count to ten!
-for i in range(10):
-        # (but not *too* quick)
-        time.sleep(0.5)
-        print i
+~~~json
+const data = const data = [
+  {name: "a", value: 5}, 
+  {name: "b", value: 10}, 
+  ...
+  {name: "z", value: 7}
+];
+
+<svg id="minSVG" width="600" height="300"> </svg>
 ~~~
+
+Joiner dataene til hvert sitt (hypotetiske) element:
+
+~~~json
+    const circles = select("#minSVG")
+      .selectAll("circle")
+      .data(data, (d) => d.name); // data(array, keyFunction)
+~~~
+
+Oppretter og definerer hvert element utifra data:
+
+~~~json
+circles
+  .enter()
+  .append("circle") // legger til en <circle>
+  .style("fill", "#ff8800")
+  .attr("cx", (d, i) => 50 + i * 40)
+  .attr("cy", 150)
+  .attr("r", (d, i) => d.value * 3);
+~~~
+
+Resultat:
+
+![SVG result](/img/svg-example2.png)
+
+***
+
+Live endring av dataene
+------------------------
+
+Hvis datasamlingen endrer seg
+
+* nye verdier
+* endring av verdier
+* fjerning av verdier
+
+Så animerer vi dette med "General Update Pattern"
+* join (koble til data)
+* enter (nye data)
+* update (data som var der fra før)
+* exit (data som er borte)
+
+Sammen med `.transition()` for animasjon
+
+***
+
+General Update Pattern
+-----------------------
+
+*join, enter, update, exit*
+
+Join og enter har vi allerede sett:
+
+~~~json
+    const circles = select("#minSVG")
+      .selectAll("circle")
+      .data(data, (d) => d.name); // data(array, keyFunction)
+~~~
+
+~~~json
+circles
+  .enter()
+  .append("circle") // legger til en <circle>
+  .style("fill", "#ff8800")
+  .attr("cx", (d, i) => 50 + i * 40)
+  .attr("cy", 150)
+  .attr("r", (d, i) => d.value * 3);
+~~~
+
+Update er **uten** `.enter()`:
+
+~~~json
+circles
+  .transition()
+  .attr("cx", (d, i) => 50 + i * 40)
+  .attr("r", (d, i) => d.value * 3);
+~~~
+
+Exit er med `.exit()`:
+
+~~~json
+circles
+  .exit()
+  .transition(t)
+  .attr("r", 0)
+  .remove();
+~~~
+
+***
+
+D3 essensielle moduler
+----------------------------
+
+TODO
+
+* Selection
+* Transitions
+* Axes
+* Scale
+* Hierarchy
+* ... (finn ut hvilke som er viktige for oppgavene)
 
