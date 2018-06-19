@@ -1,3 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'}
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-slide-content { padding: 0.5rem 4rem; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content * { font-size: 16px; }
+      .remark-code * { font-size: 12px; }
+      .remark-slide-content img { width: 50%; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
 Tool of choice: D3
 ===================
 
@@ -5,12 +30,12 @@ Tool of choice: D3
 * **Hvordan henger D3 sammen?**
 * **Hvordan programmerer man D3?**
 
-***
+---
 
 Hva er D3?
 -----------
 
-Data-Driven Documents
+### Data-Driven Documents ###
 
 * Rammeverk for datavisualisering
 
@@ -24,16 +49,14 @@ Data-Driven Documents
     * Mer arbeid
     * Frihet til å gjøre noe originalt
 
-![D3 examples](/img/d3-examples.jpg)
+![D3 examples](img/d3-examples.jpg)
 
-***
+---
 
 Hvordan henger D3 sammen?
 --------------------------
 
-D3 = Data-Driven Documents
-
-### Data ###
+### DATA-driven documents ###
 
 JSON
 
@@ -58,11 +81,9 @@ CSV
 
 (pluss pluss pluss)
 
-***
+---
 
-D3 = Data-Driven Documents
-
-### Documents ###
+### data-driven DOCUMENTS ###
 
 HTML
 
@@ -106,11 +127,9 @@ svg:hover ellipse {
 }
 ~~~
 
-***
+---
 
-D3 = Data-Driven Documents
-
-### Driven ###
+### data-DRIVEN documents ###
 
 ~~~javascript
 [
@@ -132,11 +151,11 @@ D3 = Data-Driven Documents
 
 &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681; &#8681;
 
-![SVG result](/img/svg-example.png)
+![SVG result](img/svg-example.png)
 
-**rinse & repeat**
+*rinse & repeat*
 
-***
+---
 
 Hvordan programmerer man i D3?
 -------------------------------
@@ -176,9 +195,9 @@ circles
 
 Resultat:
 
-![SVG result](/img/svg-example2.png)
+![SVG result](img/svg-example2.png)
 
-***
+---
 
 Live endring av dataene
 ------------------------
@@ -197,7 +216,7 @@ Så animerer vi dette med "General Update Pattern"
 
 Sammen med `.transition()` for animasjon
 
-***
+---
 
 General Update Pattern
 -----------------------
@@ -240,4 +259,13 @@ circles
   .attr("r", 0)
   .remove();
 ~~~
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
 
