@@ -117,7 +117,8 @@ export default class DynamicData extends Component {
       if (action == "change") {
         data[index].value = verdi;
       } else if (action == "push") {
-        data.splice(index, 0, {name: "x" + counter++, value: verdi});
+        const navn = "x" + counter++;
+        data.splice(index, 0, {name: navn, value: verdi});
       } else if (action == "pop") {
         data.splice(index, 1);
       }
