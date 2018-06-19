@@ -29,7 +29,8 @@ export default class Hierarchy extends Component {
     const g = select(svg).append("g");
 
     var circlePacking = pack()
-        .size([width, height]);
+        .size([width, height])
+        .padding(10);
 
     const root = hierarchy(data)
         .sum(function(d) { return 10; })
