@@ -38,11 +38,11 @@ D3 = Data-Driven Documents
 JSON
 
 ~~~javascript
-    [
-        { name:"Ireland", income:53000, life: 78, pop:6378, color: "black" },
-        { name:"Norway", income:73000, life: 87, pop:5084, color: "blue" },
-        { name:"Tanzania", income:27000, life: 50, pop:3407, color: "grey" }
-    ]
+[
+    { name:"Ireland", income:53000, life: 78, pop:6378, color: "black" },
+    { name:"Norway", income:73000, life: 87, pop:5084, color: "blue" },
+    { name:"Tanzania", income:27000, life: 50, pop:3407, color: "grey" }
+]
 ~~~
 
 CSV
@@ -240,18 +240,4 @@ circles
   .attr("r", 0)
   .remove();
 ~~~
-
-***
-
-D3 essensielle moduler
-----------------------------
-
-TODO
-
-* Selection
-* Transitions
-* Axes
-* Scale
-* Hierarchy
-* ... (finn ut hvilke som er viktige for oppgavene)
 
