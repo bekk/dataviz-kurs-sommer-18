@@ -18,15 +18,13 @@ export default class Interaction extends Component {
   }
 
   updateChart(data) {
-    console.log("updateChart");
+    const svg = this.svg;
 
     const color = (d, i) => `hsl(32, 100%, 60%)`
     const colorHover = (d, i) => `hsl(32, 100%, 80%)`
     const widthCount = 4;
     const xCoord = (d, i) => 120 + (i%widthCount * 60);
     const yCoord = (d, i) => this.height/2 + (Math.floor(i/widthCount) * 60);
-
-    const svg = this.svg;
 
     function handleMouseOver(d, i) {
       select(this)
@@ -71,8 +69,6 @@ export default class Interaction extends Component {
   }
 
   create() {
-    console.log("create");
-
     const data = this.props.data;
     this.svg = this.container;
     this.width = this.props.size[0];
@@ -85,7 +81,6 @@ export default class Interaction extends Component {
   }
 
   render() {
-    console.log("render")
     return <svg ref={container => (this.container = container)} />
   }
 }

@@ -12,18 +12,18 @@ class App extends Component {
 
   render() {
     const data = [
-      {name: "a", connections: ["b", "c"]}, 
-      {name: "b", connections: []}, 
-      {name: "c", connections: ["e"]}, 
-      {name: "e", connections: []}, 
-      {name: "f", connections: ["c", "a", "h"]}, 
-      {name: "g", connections: []}, 
-      {name: "h", connections: []}, 
-      {name: "i", connections: ["j"]}, 
-      {name: "j", connections: []},
-      {name: "k", connections: []},
-      {name: "l", connections: []},
-      {name: "m", connections: []}
+      {name: "a"}, 
+      {name: "b"}, 
+      {name: "c"}, 
+      {name: "e"}, 
+      {name: "f"}, 
+      {name: "g"}, 
+      {name: "h"}, 
+      {name: "i"}, 
+      {name: "j"},
+      {name: "k"},
+      {name: "l"},
+      {name: "m"}
     ];
 
 
