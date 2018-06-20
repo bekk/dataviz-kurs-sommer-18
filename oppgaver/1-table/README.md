@@ -1,4 +1,4 @@
-# Helt grunnleggende
+# Oppgave 1 - Helt grunnleggende databinding
 
 Første oppgave går ut på å ta disse dataene:
 
@@ -22,9 +22,9 @@ Legg merke til nummerformateringen og fargene. Oppgaven er ferdig når du synes 
 
 ## Utdelt oppsett
 
-Boilerplate-koden som trengs for å få bygd en d3-visualisering i en react.js-app er allerede satt opp i denne mappen. Du vil mest sannsynlig skrive mesteparten av koden din i `Table.js` hvor det står `// ENTRY POINT FOR D3`.
+Boilerplate-koden som trengs for å få bygd en d3-visualisering i en React-app er allerede satt opp i denne mappen. Du vil mest sannsynlig skrive mesteparten av koden din i `Table.js` hvor det står `// ENTRY POINT FOR D3`.
 
-Det er ikke en del av kurset å lære seg JavaScript eller react.js. Oppsettet følger det vanlige filoppsettet i react-applikasjoner. Her er allikevel en kort guide over filene i oppsettet:
+Det er ikke en del av kurset å lære seg JavaScript eller React. Oppsettet følger det vanlige filoppsettet i React-applikasjoner. Her er allikevel en kort guide over filene i oppsettet:
 
 ```javascript
 1-table/
@@ -49,7 +49,7 @@ Kjør med `npm start`. Dette vil åpne en utviklings-server som serverer applika
 
 ## Tips
 
-* D3 trenger ikke å nødvendigvis å bindes til svg-elementer. I denne oppgaven skal den bindes til en vanlig HTML-tabell `<table>`
+* D3 trenger ikke å nødvendigvis å binde til svg-elementer. I denne oppgaven skal de bindes til en vanlig HTML-tabell `<table>`
 
 * For å lage en `<tr>` i tabellen for hvert innslag i dataene gjør man altså:
 
