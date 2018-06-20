@@ -10,7 +10,7 @@ class App extends Component {
           <h2>Animated Steam Graph</h2>
         </div>
         <div>
-          <SteamGraph data={this.props.data} />
+          <SteamGraph data={this.props.data} metadata={this.props.metadata} />
         </div>
       </div>
     );

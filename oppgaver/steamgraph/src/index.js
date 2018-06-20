@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { transpose } from 'd3-array';
 
 import './index.css';
 import App from './App';
@@ -29,13 +30,31 @@ function bump(layer, numSamples) {
   });
 }
 
+/*
+  bumps() genererer vertikale slices av data, vi vil ha horisontale "lag".
+  Derfor må vi transpose (bytte om på kolonner og rader) det vi genererer
+*/
+
 let data = {
-  layers0: Array(LAYERS)
-    .fill(0)
-    .map(() => bumps(SAMPLES, BUMPS)),
-  layers1: Array(LAYERS)
-    .fill(0)
-    .map(() => bumps(SAMPLES, BUMPS))
+  selectionA: transpose(
+    Array(LAYERS)
+      .fill(0)
+      .map(() => bumps(SAMPLES, BUMPS))
+  ),
+  selectionB: transpose(
+    Array(LAYERS)
+      .fill(0)
+      .map(() => bumps(SAMPLES, BUMPS))
+  )
 };
 
-ReactDOM.render(<App data={data} />, document.getElementById('root'));
+ReactDOM.render(
+  <App
+    data={data}
+    metadata={{
+      numberOfLayers: LAYERS,
+      numberOfSamplesPerLayer: SAMPLES
+    }}
+  />,
+  document.getElementById('root')
+);
