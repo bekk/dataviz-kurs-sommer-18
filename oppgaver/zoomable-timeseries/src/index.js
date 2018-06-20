@@ -22,7 +22,7 @@ const MONTHS = [
 const YEARS = ['2016', '2017', '2018'];
 
 function random(u, l) {
-  return l + u * Math.random();
+  return l + (u - l) * Math.random();
 }
 
 function format(date) {
