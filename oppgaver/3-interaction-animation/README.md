@@ -1,4 +1,4 @@
-# Oppgave 2 - Interaksjon og animasjon
+# Oppgave 3 - Interaksjon og animasjon
 
 Denne oppgaven går ut på å ta disse dataene:
 
