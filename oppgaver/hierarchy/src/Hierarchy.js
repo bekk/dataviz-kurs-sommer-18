@@ -33,26 +33,21 @@ export default class Hierarchy extends Component {
         .padding(10);
 
     const root = hierarchy(data)
-        .sum(function(d) { return 10; })
-        .sort(function(a, b) { return b.value - a.value; });
+        .count()
+        .sort((a, b) => b.value - a.value);
 
     var node = g.selectAll(".node")
       .data(circlePacking(root).descendants())
       .enter().append("g")
-        .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-    node.append("title")
-        .text(function(d) { return d.data.name + "\n" + d.value; });
+        .attr("class", (d, i) => d.children ? "node" : "leaf node")
+        .attr("transform", (d, i) => "translate(" + d.x + "," + d.y + ")");
 
     node.append("circle")
-        .attr("r", function(d) { return d.r; })
-        .attr("opacity", 0.5);
+        .attr("r", (d, i) => d.r);
 
     node.append("text")
         .attr("dy", (d, i) => d.children ? `${-d.r/20}rem` : "0")
-        .attr("alignment-baseline", "middle")
-        .text(function(d) { return d.data.name; });
+        .text((d, i) => d.data.name);
   }
 
   render() {

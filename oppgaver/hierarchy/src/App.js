@@ -8,7 +8,7 @@ class App extends Component {
       "name": "Eve",
       "children": [
         {
-          "name": "Cain"
+          "name": "Cain",
         },
         {
           "name": "Seth",
