@@ -16,7 +16,7 @@ Første oppgave går ut på å ta disse dataene:
 
 og få dette resultatet:
 
-![Resultat oppgave 1](../img/1-table.png)
+![Resultat oppgave 1](../../img/1-table.png)
 
 Legg merke til nummerformateringen og fargene. Oppgaven er ferdig når du synes at ditt resultat er likt nok.
 
