@@ -12,7 +12,7 @@ class App extends Component {
           <h1>Bar chart</h1>
         </div>
         <div>
-          <BarChart data={data} size={[800, 500]} />
+          <BarChart data={data} size={[500, 500]} />
         </div>
       </div>
     );
