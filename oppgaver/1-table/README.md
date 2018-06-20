@@ -16,11 +16,11 @@ Første oppgave går ut på å ta disse dataene:
 
 og få dette resultatet:
 
-![Resultat oppgave 1](img/1-table.png)
+![Resultat oppgave 1](../img/1-table.png)
 
 Legg merke til nummerformateringen og fargene. Oppgaven er ferdig når du synes at ditt resultat er likt nok.
 
-### Utdelt oppsett
+## Utdelt oppsett
 
 Boilerplate-koden som trengs for å få bygd en d3-visualisering i en react.js-app er allerede satt opp i denne mappen. Du vil mest sannsynlig skrive mesteparten av koden din i `Table.js` hvor det står `// ENTRY POINT FOR D3`.
 
@@ -41,13 +41,13 @@ Det er ikke en del av kurset å lære seg JavaScript eller react.js. Oppsettet f
 └── README.md               // Denne readme-filen
 ```
 
-### Bygging og kjøring
+## Bygging og kjøring
 
 Bygg med `npm install`. Dette gjøres typisk kun 1 gang.
 
 Kjør med `npm start`. Dette vil åpne en utviklings-server som serverer applikasjonen og oppdaterer seg automatisk hver gang du lagrer filer.
 
-### Tips
+## Tips
 
 * D3 trenger ikke å nødvendigvis å bindes til svg-elementer. I denne oppgaven skal den bindes til en vanlig HTML-tabell `<table>`
 
@@ -60,6 +60,8 @@ const dataTR = select(table)
     .enter()
     .append("tr");
 ```
+
+* For å appende bare tekst, og ikke et DOM-element, bruk `.text((d, i) => "en tekst")`
 
 * Måten man bruker `.append påvirker hierarkiet av elementer: 
 
@@ -94,8 +96,6 @@ dataTR.append("foo");
 */
 ```
 
-* For å appende bare tekst, og ikke et DOM-element, bruk `.text((d, i) => "en tekst")`
-
-### Fasit
+## Fasit
 
 Se `fasit.js` for en mulig løsning og ekstra hint. Det er viktig å huske at det er som regel veldig mange forskjellige måter å lage samme visualisering på.
