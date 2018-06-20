@@ -26,6 +26,8 @@ export default class Hierarchy extends Component {
     const height = this.props.size[1];
     const data = this.props.data;
 
+    // ENTRY POINT FOR D3
+
     const g = select(svg).append("g");
 
     var circlePacking = pack()
