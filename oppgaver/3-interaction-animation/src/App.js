@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Interaction from './Interaction';
+import InteractionAnimation from './InteractionAnimation';
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class App extends Component {
           <h1>Interaction & animation</h1>
         </div>
         <div>
-          <Interaction data={data} size={[800, 500]} />
+          <InteractionAnimation data={data} size={[800, 500]} />
         </div>
       </div>
     );
