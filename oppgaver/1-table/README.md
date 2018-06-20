@@ -3,15 +3,15 @@
 Første oppgave går ut på å ta disse dataene:
 
 ~~~javascript
-    const data = [
-      {name: "diamond", hardness: 10, color: "white"},
-      {name: "ruby", hardness: 9, color: "red"},
-      {name: "sapphire", hardness: 9, color: "blue"},
-      {name: "topaz", hardness: 8, color: "yellow"},
-      {name: "emerald", hardness: 7.5, color: "green"},
-      {name: "amethyst", hardness: 7, color: "purple"},
-      {name: "opal", hardness: 6, color: "black"},
-    ];
+const data = [
+  {name: "diamond", hardness: 10, color: "white"},
+  {name: "ruby", hardness: 9, color: "red"},
+  {name: "sapphire", hardness: 9, color: "blue"},
+  {name: "topaz", hardness: 8, color: "yellow"},
+  {name: "emerald", hardness: 7.5, color: "green"},
+  {name: "amethyst", hardness: 7, color: "purple"},
+  {name: "opal", hardness: 6, color: "black"},
+];
 ~~~
 
 og få dette resultatet:
@@ -36,6 +36,7 @@ Det er ikke en del av kurset å lære seg JavaScript eller React. Oppsettet føl
 │   ├── index.js            // Inngangsporten til javascript-koden
 │   ├── App.js              // React-komponent som wrapper hele applikasjonen
 │   ├── Table.js            // React-komponenten med visualiseringen
+│   ├── fasit.js            // Fasiten til oppgaven. Unngå copy-paste!
 │   └── Roboto-Light.tff    // En kul font
 ├── package.json            // Byggekonfigurasjonen til npm
 └── README.md               // Denne readme-filen
