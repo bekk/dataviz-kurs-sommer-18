@@ -18,8 +18,6 @@ export default class DynamicData extends Component {
   }
 
   updateChart(data) {
-    console.log("updateChart");
-
     const color = (d, i) => `hsl(32, 100%, ${(d.value/20 + 0.3)*100}%)`
     const xCoord = (d, i) => 60 + i * 60;
     const radius = (d, i) => 5 + d.value * 2.5;
@@ -83,15 +81,10 @@ export default class DynamicData extends Component {
   }
 
   create() {
-    console.log("create");
-
     const data = this.props.data;
-    this.svg = this.container;
+    this.svg = this.ref;
     this.width = this.props.size[0];
     this.height = this.props.size[1];
-    
-    this.svg.setAttribute("width", this.width);
-    this.svg.setAttribute("height", this.height);
 
     this.updateChart(data);
 
@@ -102,17 +95,18 @@ export default class DynamicData extends Component {
       const verdi = Math.floor(Math.random() * 10);
       const index = Math.floor(Math.random() * data.length);
 
+      const min = 4;
       const max = 12;
 
       const action = Math.random() < 0.5
         ? "change" 
-        : ((data.length == 1 || Math.random() < 0.5 && data.length <= max)
+        : ((data.length <= min || data.length <= max && Math.random() < 0.5)
           ? "push"
           : "pop");
 
       const dataAsString = data.map((e) => `${e.name}:${e.value}`).join(" ");
 
-      console.log(`updateData ${action} ${verdi} ${index} \n${dataAsString}`)
+      console.log(`updateData ${action} index=${index} verdi=${verdi} \n${dataAsString}`)
 
       if (action == "change") {
         data[index].value = verdi;
@@ -130,7 +124,8 @@ export default class DynamicData extends Component {
   }
 
   render() {
-    console.log("render")
-    return <svg ref={container => (this.container = container)} />
+    return <svg ref={ref => (this.ref = ref)} 
+      width={this.props.size[0]} 
+      height={this.props.size[1]} />
   }
 }

@@ -23,7 +23,6 @@ class App extends Component {
       {name: "j", value: 7}
     ];
 
-
     return (
       <div className="App">
         <div className="App-header">
