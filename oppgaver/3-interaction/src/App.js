@@ -26,11 +26,10 @@ class App extends Component {
       {name: "m"}
     ];
 
-
     return (
       <div className="App">
         <div className="App-header">
-          <h1>Interaction</h1>
+          <h1>Interaction & animation</h1>
         </div>
         <div>
           <Interaction data={data} size={[800, 500]} />
