@@ -17,14 +17,17 @@ export default class Interaction extends Component {
     this.create();
   }
 
-  updateChart(data) {
-    const svg = this.svg;
+  create() {
+    const data = this.props.data;
+    const svg = this.ref;
+    const width = this.props.size[0];
+    const height = this.props.size[1];
 
     const color = (d, i) => `hsl(32, 100%, 60%)`
     const colorHover = (d, i) => `hsl(32, 100%, 80%)`
     const widthCount = 4;
     const xCoord = (d, i) => 120 + (i%widthCount * 60);
-    const yCoord = (d, i) => this.height/2 + (Math.floor(i/widthCount) * 60);
+    const yCoord = (d, i) => height/2 + (Math.floor(i/widthCount) * 60);
 
     function handleMouseOver(d, i) {
       select(this)
@@ -53,7 +56,7 @@ export default class Interaction extends Component {
       select(`#text_${d.name}`).remove();
     }
 
-    const circles = select(this.svg)
+    const circles = select(svg)
       .selectAll("circle")
       .data(data, (d) => d.name);
 
@@ -68,19 +71,9 @@ export default class Interaction extends Component {
       .on("mouseout", handleMouseOut);
   }
 
-  create() {
-    const data = this.props.data;
-    this.svg = this.container;
-    this.width = this.props.size[0];
-    this.height = this.props.size[1];
-    
-    this.svg.setAttribute("width", this.width);
-    this.svg.setAttribute("height", this.height);
-
-    this.updateChart(data);
-  }
-
   render() {
-    return <svg ref={container => (this.container = container)} />
+    return <svg ref={ref => (this.ref = ref)} 
+      width={this.props.size[0]} 
+      height={this.props.size[1]} />
   }
 }
