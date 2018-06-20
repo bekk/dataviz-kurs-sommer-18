@@ -42,7 +42,7 @@ import { select } from "d3-selection";
 import { axisLeft } from "d3-axis";
 ```
 
-* For å lage en akse med etiketter bør man bruke `d3-axis`. For eksempel `axisLeft(scale)` som tar en skala fra `d3-scale` som argument, og returnerer en generator-funksjon som bygger en ferdig akse. 
+* For å lage en akse med etiketter bør man bruke `d3-axis`. For eksempel `axisLeft(scale)` som tar en skala fra `d3-scale` som argument, og returnerer en generator-funksjon som bygger en ferdig akse. Se dokumentasjonen på https://github.com/d3/d3-axis
 
 * For å bruke en generator-funksjon på en SVG kan man legge til en gruppe `<g>` og kalle generatoren for å fylle den gruppa med elementer:
 
