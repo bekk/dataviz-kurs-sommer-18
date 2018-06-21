@@ -64,6 +64,8 @@ const dataTR = select(table)
 
 * For å appende bare tekst, og ikke et DOM-element, bruk `.text((d, i) => "en tekst")`
 
+* D3 kommer med mange nyttige verktøy for datavisualiseringsrelaterte oppgaver. F.eks. `format(<format>)`: https://github.com/d3/d3-format#d3-format
+
 * Måten man bruker `.append påvirker hierarkiet av elementer: 
 
 ```javascript
