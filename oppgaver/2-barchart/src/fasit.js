@@ -3,8 +3,7 @@ const yScale = scaleLinear()
   .range([0, height]);
 
 select(svg)
-  .style("background-color", "#d1d1d1")
-  .style("padding", "2rem 4rem");
+  .style("background-color", "#d1d1d1");
 
 select(svg)
   .selectAll("rect")
