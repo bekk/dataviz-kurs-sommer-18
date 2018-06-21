@@ -22,6 +22,8 @@ Oppsettet er stort sett slik som forrige oppgave `1-table`. Er ikke det praktisk
 
 * For å gruppere svg-elementer slik at man kan gi dem felles attributter og flytte de rundt som en samling kan det være greit å bruke en `<g>`: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
 
+* Koordinatsystemet i SVG-er er fra øverste venstre hjørne og nedover til høyre. Altså tegnes en `<rect>` fra `y`-koordinaten og nedover iht til `height`. Dette må man veldig ofte ta hensyn til når man tegner en graf som skal gå fra bunnen og oppover.
+
 * SVG-elementer kan styles med CSS. Det kan iblant være mye mer praktisk enn å gjøre ting i ren SVG. Slik kan kan f.eks. style `text`-elementer som har klassen `.tick`:
 
 ```css
