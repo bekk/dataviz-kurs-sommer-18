@@ -11,12 +11,6 @@ select(svg)
   .enter()
   .append("rect");
 
-select(svg)
-  .selectAll("rect")
-  .data(this.props.data)
-  .exit()
-  .remove();
-
 const barWidth = 50;
 const barMargin = 2;
 
